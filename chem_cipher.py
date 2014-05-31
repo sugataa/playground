@@ -23,7 +23,17 @@ dbase = shelve.open("chem_list")
 #TODO: problem is that i dont know which sentences are valid?
     # most aren't
 
-sentence = 'back that ass up'
+sentence = 'be nice'
+sentence2 = 'beryllium nickel cerium'
+
+def interpret(word_list):
+    out = ''
+    for item in word_list:
+        # reversing a dictionary -> pretty cool
+        # look up a key, given a value
+        out += list(dbase.keys())[list(dbase.values()).index(item.capitalize())]
+        out += " "
+    return out
 
 def transform(sent):
     out = ""
@@ -46,6 +56,8 @@ def transform(sent):
     return out
     
 output = transform(sentence.replace(" ", "").lower())
-print output
+ouput2 = interpret(sentence2.split())
+print 'Tranform: ', output
+print 'Interpret: ', ouput2 
     
     
